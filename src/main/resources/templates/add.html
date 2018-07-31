@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add product</title>
+
+
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row" style="height: 100px;"></div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+
+            <form action="/add" method="post" id="form">
+
+                <div class="form-group">
+                    <label>numer seryjny</label>
+                    <input type="text" name="serialNo" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>nazwa produktu</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>opis produktu</label>
+                    <input type="text" name="description" rows="3" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Kategoria</label>
+                    <select class="form-control" id="categories" name="category">
+                        <option th:each="c : ${category}" th:text="${c.name}"></option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Producent</label>
+                    <select class="form-control" id="producer" name="producer">
+                        <option th:each="p : ${producer}" th:text="${p.name}"></option>
+                    </select>
+                </div>
+
+
+                <div class="form-group">
+                    <label>Cena</label>
+                    <input type="text" name="price" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Ilość</label>
+                    <input type="number" name="quantity" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>Zdjęcie</label>
+                    <input type="text" name="picture" class="form-control">
+                </div>
+
+
+                <fieldset class="form-group">
+                    <div class="row">
+                        <label>Promowany</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="gridRadios1" name="promotion" value="True">
+                            <label class="form-check-label" for="gridRadios1">
+                                True
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="gridRadios2" name="promotion"
+                                   value="False">
+                            <label class="form-check-label" for="gridRadios2">
+                                False
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <button class="btn btn-success" type="submit" form="form">create</button>
+                <button class="btn btn-default" form="products">cancel</button>
+
+            </form>
+
+            <form action="/products" method="get" id="products"></form>
+
+        </div>
+
+        <div class="col-sm-4"></div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

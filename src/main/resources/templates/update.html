@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+
+
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row" style="height: 100px;"></div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+
+            <form action="/update" method="post" id="form" >
+                <input type="hidden" name="serialNo" th:value="${product.serialNo}">
+
+                <div class="form-group">
+                    <input type="text" name="serialNo" th:value="${product.serialNo}" class="form-control" disabled>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="name" th:value="${product.name}" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text"name="description" th:value="${product.description}" rows="3" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="text" th:value="${product.categories}" class="form-control" disabled>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" th:value="${product.producer}" class="form-control" disabled>
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="price" th:value="${product.price}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input type="number" name="quantity" th:value="${product.quantity}" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <input type="text" name="picture" th:value="${product.picture}" class="form-control">
+                </div>
+
+
+                <fieldset class="form-group">
+                    <div class="row">
+                        <label>Promotion</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"  id="gridRadios1" name="promotion" value="True">
+                            <label class="form-check-label" for="gridRadios1">
+                                True
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio"  id="gridRadios2" name="promotion"  value="False">
+                            <label class="form-check-label" for="gridRadios2">
+                                False
+                            </label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <button class="btn btn-success" type="submit" form="form">update</button>
+                <button class="btn btn-default" form="products">cancel</button>
+
+            </form>
+
+            <form action="/products" id="products"></form>
+
+        </div>
+
+        <div class="col-sm-4"></div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

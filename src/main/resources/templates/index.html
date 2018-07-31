@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+
+    <style>
+        .mybutton {
+
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <div class="row" style="text-align: center">
+        <div class="col-sm-6">
+            <form action="/products" id="prod" method="get"></form>
+            <button class="btn btn-default mybutton" form="prod">produkty</button>
+            <form action="swagger-ui.html" id="swagg"></form>
+            <button class="btn btn-default mybutton" form="swagg">swagger</button>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>
+
+

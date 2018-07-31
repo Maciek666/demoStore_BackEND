@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+
+
+    <link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="webjars/jquery/1.9.1/jquery.min.js"></script>
+
+
+    <style>
+
+        .row-top {
+            height: 50px;
+        }
+
+        .tab-row {
+            margin: auto;
+            width: 100%;
+        }
+
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .tab {
+            width: 100%;
+            margin: auto;
+        }
+
+        .b {
+            margin: auto;
+
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+            text-wrap: normal;
+        }
+
+        th {
+            background-color: whitesmoke;
+        }
+
+        .button {
+            margin-right: 3px;
+            margin-bottom: 8px;
+        }
+
+        /*tr:nth-child(even) {*/
+        /*background-color: #dddddd;*/
+        /*}*/
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="row row-top"></div>
+    <div class="row tab-row">
+        <div class="col-lg-1 tab">
+
+            <table class="table">
+                <tr>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>categories</th>
+                    <th>price</th>
+                    <th>producer</th>
+                    <th>quantity</th>
+                    <th>promotion</th>
+                    <th>serialNo</th>
+                    <th>picture</th>
+
+                </tr>
+
+                <tr th:each="o : ${products}">
+                    <td th:text="${o.name}"></td>
+                    <td th:text="${o.description}"></td>
+                    <td th:text="${o.categories}"></td>
+                    <td th:text="${o.price}"></td>
+                    <td th:text="${o.producer}"></td>
+                    <td th:text="${o.quantity}"></td>
+                    <td th:text="${o.promotion}"></td>
+                    <td th:text="${o.serialNo}"></td>
+                    <td><img width="100px" height="100px" th:src="${o.picture}"/></td>
+
+                    <td>
+                        <form action="/delete" th:id="${o.serialNo} + del" method="get">
+                            <input type="hidden" th:value="${o.serialNo}" name="serialNo">
+                            <button class="btn btn-danger b" type="submit" th:form="${o.serialNo} + del"> delete
+                            </button>
+                        </form>
+                    </td>
+
+
+                    <td>
+                        <form action="/update-form" th:id="${o.serialNo} + upd">
+                            <input type="hidden" name="serialNo" th:value="${o.serialNo}">
+                            <button class="btn btn-success b" type="submit" th:form="${o.serialNo} + upd">update
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/opinion" th:id="${o.serialNo} + op" method="get">
+                            <input type="hidden" name="serialNo" th:value="${o.serialNo}">
+                            <button class="btn btn-default" type="submit" th:form="${o.serialNo} + op">show opinion
+                            </button>
+                        </form>
+                        <form action="/opinion-form" th:id="${o.serialNo} + opf" method="get">
+                            <input type="hidden" name="serialNo" th:value="${o.serialNo}">
+                            <button class="btn btn-default" type="submit" th:form="${o.serialNo} + opf">add opinion
+                            </button>
+                        </form>
+
+                    </td>
+
+
+                </tr>
+                <form action="/add-form" id="create"/>
+                <button class="btn btn-success" form="create">create</button>
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+</body>
+</html>
